@@ -190,7 +190,7 @@ export function StreamSection() {
               // Desktop: relative container for absolute positioning
               "md:block md:relative"
             )}
-            style={!isMobile ? { minHeight: `${Math.ceil(displayedCards.length / 4) * 140 + 200}px` } : undefined}
+            style={!isMobile ? { minHeight: `${Math.ceil(displayedCards.length / 4) * 140 + 60}px` } : undefined}
           >
             {displayedCards.map((task, index) => {
               const { x, y, rotation, zIndex } = getCardPosition(index, displayedCards.length, task.isDocument || false)
