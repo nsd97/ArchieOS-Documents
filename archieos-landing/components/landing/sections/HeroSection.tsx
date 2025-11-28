@@ -15,7 +15,7 @@ export function HeroSection() {
 
       {/* Subhead */}
       <p className="mt-6 text-lg md:text-xl lg:text-2xl text-center max-w-xl text-text-secondary">
-        The first AI that handles the entire back office.
+        The first AI that handles the <strong className="font-semibold text-foreground">entire</strong> back office.
       </p>
 
       {/* Scroll prompt */}
