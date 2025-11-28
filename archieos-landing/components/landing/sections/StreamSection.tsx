@@ -231,7 +231,7 @@ export function StreamSection() {
         {/* Closing line */}
         <div className="text-center mt-6 md:mt-8">
           <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-text-secondary">
-            ...and the work just gets done.
+            ...and the work gets done.
           </p>
         </div>
       </div>
