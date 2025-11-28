@@ -31,15 +31,15 @@ export function TaskCard({ task, status, isDocument = false, className, style }:
       {isDocument && (
         <div className={cn(
           "bg-white/90 backdrop-blur-sm rounded-t-xl",
-          "px-4 py-4 border-b border-neutral-100",
+          "px-3 py-3 md:px-4 md:py-4 border-b border-neutral-100",
           "shadow-sm"
         )}>
           {/* Faux document lines */}
-          <div className="space-y-2">
-            <div className="h-2 bg-neutral-200/70 rounded-full w-2/3" />
-            <div className="h-2 bg-neutral-200/70 rounded-full w-full" />
-            <div className="h-2 bg-neutral-200/70 rounded-full w-4/5" />
-            <div className="h-2 bg-neutral-200/70 rounded-full w-3/4" />
+          <div className="space-y-1.5 md:space-y-2">
+            <div className="h-1.5 md:h-2 bg-neutral-200/70 rounded-full w-2/3" />
+            <div className="h-1.5 md:h-2 bg-neutral-200/70 rounded-full w-full" />
+            <div className="h-1.5 md:h-2 bg-neutral-200/70 rounded-full w-4/5" />
+            <div className="h-1.5 md:h-2 bg-neutral-200/70 rounded-full w-3/4" />
           </div>
         </div>
       )}
@@ -52,8 +52,8 @@ export function TaskCard({ task, status, isDocument = false, className, style }:
           isDocument && "rounded-t-none"
         )}
       >
-        <CardContent className="px-4 py-0 flex items-center justify-between gap-4">
-          <span className="text-sm font-medium text-foreground">{task}</span>
+        <CardContent className="px-3 md:px-4 py-0 flex items-center justify-between gap-2 md:gap-4">
+          <span className="text-xs md:text-sm font-medium text-foreground truncate min-w-0">{task}</span>
           <Badge
             variant={config.variant}
             className={cn(
