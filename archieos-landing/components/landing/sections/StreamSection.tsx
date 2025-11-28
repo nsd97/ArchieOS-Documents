@@ -1,8 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState, useMemo } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Section } from "@/components/layout/Section"
-import { LiveWaveform } from "@/components/ui/waveform"
 import { TaskCard, type TaskStatus } from "@/components/landing/TaskCard"
 import { cn } from "@/lib/utils"
 
@@ -81,10 +80,25 @@ function getCardPosition(index: number, totalCards: number, isDocument: boolean)
   return { x, y, rotation, zIndex }
 }
 
+// Number of cards to show on mobile vs desktop
+const MOBILE_CARD_COUNT = 8
+const DESKTOP_CARD_COUNT = tasks.length
+
 export function StreamSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [visibleCards, setVisibleCards] = useState<number[]>([])
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   // Intersection Observer to detect when section is in view
   useEffect(() => {
@@ -104,18 +118,22 @@ export function StreamSection() {
     return () => observer.disconnect()
   }, [isVisible])
 
+  // Get the cards to display based on screen size
+  const displayedCards = isMobile ? tasks.slice(0, MOBILE_CARD_COUNT) : tasks
+
   // Staggered card appearance with variable timing for organic feel
   useEffect(() => {
     if (!isVisible) return
 
     const timeouts: NodeJS.Timeout[] = []
+    const cardCount = isMobile ? MOBILE_CARD_COUNT : DESKTOP_CARD_COUNT
 
-    // Start showing cards after waveform has been visible for 400ms
+    // Start showing cards after section is visible
     const initialDelay = setTimeout(() => {
       let cumulativeDelay = 0
-      tasks.forEach((_, index) => {
-        // Variable interval: 120-200ms (faster for 20 cards)
-        const interval = 120 + (index % 3) * 40
+      for (let index = 0; index < cardCount; index++) {
+        // Variable interval: 100-160ms for snappy appearance
+        const interval = 100 + (index % 3) * 30
         cumulativeDelay += interval
 
         const timeout = setTimeout(() => {
@@ -123,13 +141,13 @@ export function StreamSection() {
         }, cumulativeDelay)
 
         timeouts.push(timeout)
-      })
-    }, 400)
+      }
+    }, 200)
 
     timeouts.push(initialDelay)
 
     return () => timeouts.forEach(clearTimeout)
-  }, [isVisible])
+  }, [isVisible, isMobile])
 
   return (
     <Section
@@ -147,29 +165,19 @@ export function StreamSection() {
           </p>
         </div>
 
-        {/* Full-width streaming waveform */}
-        <div className="w-full">
-          <LiveWaveform
-            active={isVisible}
-            mode="scrolling"
-            prefill={true}
-            minHeight={0.15}
-            speed={isVisible ? 35 : 0}
-            height={100}
-            barCount={80}
-            barWidth={3}
-            barGap={4}
-            barColor="#000000"
-            fadeEdges={true}
-            fadeWidth={48}
-          />
-        </div>
-
-        {/* Task cards - organic cascade layout */}
-        <div className="w-full max-w-6xl mx-auto px-6 mt-12 md:mt-16">
-          <div className="relative" style={{ minHeight: `${Math.ceil(tasks.length / 4) * 140 + 200}px` }}>
-            {tasks.map((task, index) => {
-              const { x, y, rotation, zIndex } = getCardPosition(index, tasks.length, task.isDocument || false)
+        {/* Task cards - grid on mobile, cascade on desktop */}
+        <div className="w-full max-w-6xl mx-auto px-4 md:px-6">
+          <div
+            className={cn(
+              // Mobile: 2-column grid
+              "grid grid-cols-2 gap-3",
+              // Desktop: relative container for absolute positioning
+              "md:block md:relative"
+            )}
+            style={!isMobile ? { minHeight: `${Math.ceil(displayedCards.length / 4) * 140 + 200}px` } : undefined}
+          >
+            {displayedCards.map((task, index) => {
+              const { x, y, rotation, zIndex } = getCardPosition(index, displayedCards.length, task.isDocument || false)
 
               return (
                 <TaskCard
@@ -178,15 +186,22 @@ export function StreamSection() {
                   status={task.status}
                   isDocument={task.isDocument}
                   className={cn(
-                    "absolute w-[200px] md:w-[240px]",
+                    // Mobile: full width within grid cell
+                    "w-full",
+                    // Desktop: absolute positioning with fixed width
+                    "md:absolute md:w-[240px]",
+                    // Animation states
                     "opacity-0 translate-y-4",
                     visibleCards.includes(index) && "opacity-100 translate-y-0"
                   )}
                   style={{
-                    left: `${x}%`,
-                    top: `${y}px`,
-                    transform: `rotate(${rotation}deg)`,
-                    zIndex,
+                    // Only apply cascade positioning on desktop
+                    ...(isMobile ? {} : {
+                      left: `${x}%`,
+                      top: `${y}px`,
+                      transform: `rotate(${rotation}deg)`,
+                      zIndex,
+                    }),
                     transitionProperty: "opacity, transform",
                     transitionDuration: "500ms",
                     transitionTimingFunction: "ease-out",
