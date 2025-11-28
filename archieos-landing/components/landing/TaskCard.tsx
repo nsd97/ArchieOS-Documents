@@ -52,8 +52,8 @@ export function TaskCard({ task, status, isDocument = false, className, style }:
           isDocument && "rounded-t-none"
         )}
       >
-        <CardContent className="px-3 md:px-4 py-0 flex items-center justify-between gap-2 md:gap-4">
-          <span className="text-xs md:text-sm font-medium text-foreground truncate min-w-0">{task}</span>
+        <CardContent className="px-3 md:px-4 py-0 flex items-start justify-between gap-2 md:gap-4">
+          <span className="text-xs md:text-sm font-medium text-foreground break-words">{task}</span>
           <Badge
             variant={config.variant}
             className={cn(
