@@ -9,6 +9,7 @@ export type TaskStatus = "created" | "prepared" | "drafted" | "in_progress" | "r
 interface TaskCardProps {
   task: string
   status: TaskStatus
+  isDocument?: boolean
   className?: string
   style?: React.CSSProperties
 }
@@ -21,32 +22,51 @@ const statusConfig: Record<TaskStatus, { label: string; icon: string; variant: "
   in_progress: { label: "in progress", icon: "◐", variant: "secondary" },
 }
 
-export function TaskCard({ task, status, className, style }: TaskCardProps) {
+export function TaskCard({ task, status, isDocument = false, className, style }: TaskCardProps) {
   const config = statusConfig[status]
 
   return (
-    <Card
-      className={cn(
-        "bg-white/80 backdrop-blur-sm border-0 shadow-md py-3",
-        "transition-all duration-300",
-        className
+    <div className={className} style={style}>
+      {/* Document Preview - always visible for document deliverables */}
+      {isDocument && (
+        <div className={cn(
+          "bg-white/90 backdrop-blur-sm rounded-t-xl",
+          "px-4 py-4 border-b border-neutral-100",
+          "shadow-sm"
+        )}>
+          {/* Faux document lines */}
+          <div className="space-y-2">
+            <div className="h-2 bg-neutral-200/70 rounded-full w-2/3" />
+            <div className="h-2 bg-neutral-200/70 rounded-full w-full" />
+            <div className="h-2 bg-neutral-200/70 rounded-full w-4/5" />
+            <div className="h-2 bg-neutral-200/70 rounded-full w-3/4" />
+          </div>
+        </div>
       )}
-      style={style}
-    >
-      <CardContent className="px-4 py-0 flex items-center justify-between gap-4">
-        <span className="text-sm font-medium text-foreground">{task}</span>
-        <Badge
-          variant={config.variant}
-          className={cn(
-            "text-xs shrink-0",
-            config.variant === "default" && "bg-black text-white",
-            config.variant === "secondary" && "bg-neutral-200 text-neutral-700"
-          )}
-        >
-          <span className="mr-1">{config.icon}</span>
-          {config.label}
-        </Badge>
-      </CardContent>
-    </Card>
+
+      {/* Main Card */}
+      <Card
+        className={cn(
+          "bg-white/80 backdrop-blur-sm border-0 shadow-md py-3",
+          "transition-all duration-300",
+          isDocument && "rounded-t-none"
+        )}
+      >
+        <CardContent className="px-4 py-0 flex items-center justify-between gap-4">
+          <span className="text-sm font-medium text-foreground">{task}</span>
+          <Badge
+            variant={config.variant}
+            className={cn(
+              "text-xs shrink-0",
+              config.variant === "default" && "bg-black text-white",
+              config.variant === "secondary" && "bg-neutral-200 text-neutral-700"
+            )}
+          >
+            <span className="mr-1">{config.icon}</span>
+            {config.label}
+          </Badge>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
