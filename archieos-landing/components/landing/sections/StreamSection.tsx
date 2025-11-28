@@ -49,6 +49,40 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
+// Seeded pseudo-random for deterministic positioning (SSR safe)
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9999) * 10000
+  return x - Math.floor(x)
+}
+
+// Calculate organic scattered position for each card
+function getCardPosition(index: number, totalCards: number, isDocument: boolean) {
+  const columns = 5 // More columns for wider canvas
+  const baseColumn = index % columns
+  const row = Math.floor(index / columns)
+  const totalRows = Math.ceil(totalCards / columns)
+
+  // Distribute across 15-85% of container width (200vw canvas)
+  const columnWidth = 70 / columns
+  const baseX = 15 + baseColumn * columnWidth + columnWidth / 2
+  const xOffset = (seededRandom(index * 7) - 0.5) * columnWidth * 0.8
+  const x = Math.max(8, Math.min(92, baseX + xOffset))
+
+  // Y positioning with organic offset
+  const baseY = row * 140
+  const yOffset = seededRandom(index * 13) * 50
+  const y = baseY + yOffset
+
+  // Rotation for organic feel (-4 to +4 degrees, less for documents)
+  const maxRotation = isDocument ? 2 : 4
+  const rotation = (seededRandom(index * 17) - 0.5) * maxRotation
+
+  // Z-index: earlier rows on top
+  const zIndex = totalRows - row + 1
+
+  return { x, y, rotation, zIndex }
+}
+
 export function StreamSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -68,7 +102,7 @@ export function StreamSection() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     )
 
     if (sectionRef.current) {
@@ -78,7 +112,7 @@ export function StreamSection() {
     return () => observer.disconnect()
   }, [isVisible])
 
-  // Staggered card appearance
+  // Staggered card appearance - "drop in" effect
   useEffect(() => {
     if (!isVisible) return
 
@@ -100,10 +134,15 @@ export function StreamSection() {
     return () => timeouts.forEach(clearTimeout)
   }, [isVisible, shuffledTasks])
 
+  // Calculate container height based on rows
+  const columns = 5
+  const rows = Math.ceil(shuffledTasks.length / columns)
+  const containerHeight = rows * 140 + 100
+
   return (
     <Section
       id="stream"
-      className="py-24 md:py-32 overflow-x-hidden"
+      className="py-24 md:py-32"
     >
       <div ref={sectionRef}>
         {/* Header */}
@@ -131,28 +170,44 @@ export function StreamSection() {
           />
         </div>
 
-        {/* Task cards - horizontal overflow */}
-        <div className="flex gap-3 md:gap-4 py-4 w-max">
-          {shuffledTasks.map((task, index) => (
-            <TaskCard
-              key={task.task}
-              task={task.task}
-              status={task.status}
-              isDocument={task.isDocument}
-              className={cn(
-                "shrink-0",
-                "w-[140px] md:w-[200px]",
-                "opacity-0 translate-y-4",
-                visibleCards.includes(index) && "opacity-100 translate-y-0"
-              )}
-              style={{
-                transform: `translateY(${index % 2 === 0 ? -3 : 3}px) rotate(${(index % 3 - 1) * 0.6}deg)`,
-                transitionProperty: "opacity, transform",
-                transitionDuration: "400ms",
-                transitionTimingFunction: "ease-out",
-              }}
-            />
-          ))}
+        {/* Task cards - scattered layout with horizontal overflow */}
+        <div className="overflow-x-hidden">
+          <div
+            className="relative w-[200vw] -ml-[50vw]"
+            style={{ minHeight: `${containerHeight}px` }}
+          >
+            {shuffledTasks.map((task, index) => {
+              const { x, y, rotation, zIndex } = getCardPosition(
+                index,
+                shuffledTasks.length,
+                task.isDocument || false
+              )
+
+              return (
+                <TaskCard
+                  key={task.task}
+                  task={task.task}
+                  status={task.status}
+                  isDocument={task.isDocument}
+                  className={cn(
+                    "absolute",
+                    "w-[140px] md:w-[200px]",
+                    "opacity-0 scale-95 translate-y-4",
+                    visibleCards.includes(index) && "opacity-100 scale-100 translate-y-0"
+                  )}
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}px`,
+                    transform: `rotate(${rotation}deg)`,
+                    zIndex,
+                    transitionProperty: "opacity, transform",
+                    transitionDuration: "500ms",
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  }}
+                />
+              )
+            })}
+          </div>
         </div>
 
         {/* Closing line */}
