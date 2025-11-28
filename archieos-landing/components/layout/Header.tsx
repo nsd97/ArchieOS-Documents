@@ -19,7 +19,7 @@ export function Header() {
     >
       <div className="flex items-center h-14 md:h-16 px-4 md:px-6">
         <Image
-          src="/archie-logo.jpg"
+          src="/Archie-Logo.svg"
           alt="Archie"
           width={40}
           height={40}
