@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Section } from "@/components/layout/Section"
+import { LiveWaveform } from "@/components/ui/waveform"
 import { TaskCard, type TaskStatus } from "@/components/landing/TaskCard"
 import { cn } from "@/lib/utils"
 
@@ -160,6 +161,24 @@ export function StreamSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
             What if you could just ramble on...
           </h2>
+        </div>
+
+        {/* Full-width streaming waveform */}
+        <div className="w-full mb-12 md:mb-16">
+          <LiveWaveform
+            active={isVisible}
+            mode="scrolling"
+            prefill={true}
+            minHeight={0.15}
+            speed={isVisible ? 35 : 0}
+            height={100}
+            barCount={80}
+            barWidth={3}
+            barGap={4}
+            barColor="#000000"
+            fadeEdges={true}
+            fadeWidth={48}
+          />
         </div>
 
         {/* Task cards - grid on mobile, cascade on desktop */}
