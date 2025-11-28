@@ -1,31 +1,22 @@
 "use client"
 
 import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { useScrollPosition } from "@/hooks/useScrollPosition"
 
 export function Header() {
-  const { isScrolled } = useScrollPosition(50)
-
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      )}
-      style={isScrolled ? { backgroundColor: 'rgba(250, 249, 245, 0.8)' } : undefined}
-    >
-      <div className="flex items-center h-14 md:h-16 px-4 md:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="flex items-center justify-between h-10 md:h-12 px-4 md:px-6">
         <Image
           src="/Archie-Logo.svg"
           alt="Archie"
-          width={40}
+          width={120}
           height={40}
-          className="rounded"
+          className="rounded w-[100px] md:w-[120px] h-auto"
           priority
         />
+        <button className="bg-black text-white text-sm font-medium px-4 py-1.5 rounded-full hover:bg-neutral-800 transition-colors">
+          Join Waitlist
+        </button>
       </div>
     </header>
   )
