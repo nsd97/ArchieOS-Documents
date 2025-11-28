@@ -17,7 +17,7 @@ export function Header() {
       )}
       style={isScrolled ? { backgroundColor: 'rgba(250, 249, 245, 0.8)' } : undefined}
     >
-      <div className="flex items-center p-6 md:p-8">
+      <div className="flex items-center h-14 md:h-16 px-4 md:px-6">
         <Image
           src="/archie-logo.jpg"
           alt="Archie"
