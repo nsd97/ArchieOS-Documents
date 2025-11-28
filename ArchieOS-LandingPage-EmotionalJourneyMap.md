@@ -53,77 +53,186 @@ The core psychological shift: from "this is another thing I'll pay for and never
 
 ---
 
-**Option A: The Day in the Life**
-- Key hook: Paint a hyper-specific picture of their chaos—the car, the phone, the mental load, the 47 browser tabs they'll never get back to. Not abstract "operational challenges"—real moments.
-- Why it works: Specificity creates intimacy. When they see their exact Tuesday described, they trust that whatever comes next was built for them.
+~~**Option A: The Day in the Life**~~
+~~- Key hook: Paint a hyper-specific picture of their chaos—the car, the phone, the mental load, the 47 browser tabs they'll never get back to. Not abstract "operational challenges"—real moments.~~
+~~- Why it works: Specificity creates intimacy. When they see their exact Tuesday described, they trust that whatever comes next was built for them.~~
 
-**Option B: The Graveyard**
-- Key hook: Reference the tools they're paying for but don't use. The CRM they gave up on. The project management app that felt like homework. Don't name competitors—just describe the pattern.
-- Why it works: Validates their experience. Positions Archie against their real enemy (complexity), not against specific competitors.
+~~**Option B: The Graveyard**~~
+~~- Key hook: Reference the tools they're paying for but don't use. The CRM they gave up on. The project management app that felt like homework. Don't name competitors—just describe the pattern.~~
+~~- Why it works: Validates their experience. Positions Archie against their real enemy (complexity), not against specific competitors.~~
 
-**Option C: The Hidden Cost**
-- Key hook: Quantify what operational chaos actually costs: deals that slip, clients who feel forgotten, the assistant they keep having to retrain, the vacation they never take.
-- Why it works: Creates urgency by making the status quo feel expensive. Moves from "this is annoying" to "this is costing me."
+~~**Option C: The Hidden Cost**~~
+~~- Key hook: Quantify what operational chaos actually costs: deals that slip, clients who feel forgotten, the assistant they keep having to retrain, the vacation they never take.~~
+~~- Why it works: Creates urgency by making the status quo feel expensive. Moves from "this is annoying" to "this is costing me."~~
+
+**Option D: The One-Line Mirror**
+- Key hook: A single question that captures their entire reality. "Tired of pulling out your laptop while you drive?"
+- Why it works: Says everything in one breath. If they've done it, they're in. No explanation needed—the absurdity is the point. Minimal words, maximum recognition.
 
 ---
 
-**Strategic tension:** Option A is most emotionally resonant but longest. Option C is most urgent but may feel salesy. Option B is the middle ground—recommend B with specific A-style moments woven in.
+~~**Strategic tension:** Option A is most emotionally resonant but longest. Option C is most urgent but may feel salesy. Option B is the middle ground.~~ Option D is the sharpest—one line that either lands or doesn't. Pairs perfectly with the minimal Option D hero. If they've pulled out their laptop while driving, they're in. No explanation needed.
 
 ---
 
-### 3. Solution Reveal (The Magic Moment)
+### 3. Solution Reveal + How It Works (The Magic Moment)
 
 **Visitor arrives feeling:** Seen, agitated, ready for relief. But still guarded—they've heard "we solve this" before.
 
-**We move them to:** Believing, for the first time, that something simple enough for them actually exists.
+**We move them to:** Believing, for the first time, that something simple enough for them actually exists. And understanding exactly how it works—in one glance.
 
 ---
 
-**Option A: The Voice Memo Demo**
-- Key hook: Show (or describe) the exact flow: open app, talk like you'd talk to an assistant, see the work appear done. No typing, no forms, no learning curve.
-- Why it works: This IS the product. The magic moment is also the proof of simplicity. If they can imagine doing this in their car, they're sold.
+~~**The Approach: The Voice Memo Demo**~~
 
-**Option B: The Before/After**
-- Key hook: Side-by-side contrast: "Before: 47 steps across 6 tools. After: You talked for 30 seconds." Don't show the tools—show the experience.
-- Why it works: Makes the transformation viscerally clear. The simplicity becomes the hero, not the feature list.
+~~Show the exact flow. No abstraction, no explanation—just the thing itself:~~
 
-**Option C: The "You Already Know How" Frame**
-- Key hook: Lead with the insight: "You already know how to leave a voice memo. You already know how to describe what you need. Archie does everything else."
-- Why it works: Removes the learning curve anxiety entirely. Positions the product as an extension of skills they already have.
+~~1. **You talk.** (30 seconds, exactly like you'd leave a voice memo for yourself)~~
+~~2. **Archie handles it.** (Listing draft created. Photographer pinged. Seller update drafted. Tasks queued.)~~
+~~3. **You approve.** (Big buttons: Yes. No. Edit. Kindergarten-level controls.)~~
+
+~~The magic moment IS the "how it works." They don't need two sections—they need to see the flow once and get it.~~
 
 ---
 
-**Strategic tension:** All three options work. Recommend Option A as the centerpiece (the literal magic moment) with Option C as the framing language. Option B could work as supporting visual/animation.
+**The Story We're Showing:**
+
+Context: Realtor just hung up a call with a seller while sitting in the car. They tap the iOS Shortcut button → Archie starts recording → they speak for 30-60 seconds → tasks appear as done or in progress.
+
+The outputs:
+- New listing draft created
+- Photographer outreach prepared
+- Seller update email drafted
+- Tasks for staging in progress
+- MLS data entry form ready
+
+Mobile-first. React + shadcn components. No dashboard feel—just the feeling of relief.
 
 ---
 
-### 4. How It Works (Simplified)
+~~**Visual approaches (deprecated):**~~
 
-**Visitor arrives feeling:** Believing it might work but needing just enough clarity to feel confident—not a tutorial, just reassurance.
+~~- **The Transcript → Actions Cascade:** Show a waveform (or transcript snippet) on the left, and a clean vertical list of completed actions cascading on the right. Static, not animated. The work is already done. Visual language: voice in → structured output out.~~
 
-**We move them to:** "I get it. This is actually simple."
+~~- **The Phone in Context:** A minimal phone mockup, mid-voice-memo. Below it, a simple card stack showing what Archie created: "Listing draft," "Photographer outreach," "Seller email." No UI chrome, no settings icons—just the outputs.~~
 
----
+~~- **The Before/After Strip:** Two states, side by side. Left: a chaotic mental load (scattered notes, open tabs, the steering wheel). Right: a single clean list of handled items. No product UI—just the feeling of "done."~~
 
-**Option A: The Three-Step Strip**
-- Key hook: Talk → Archie Handles → You Approve. Three icons, three short phrases, done. No feature breakdown, no "powered by AI" language.
-- Why it works: The constraint forces simplicity. If you can't explain it in three steps, you're explaining the wrong thing.
-
-**Option B: The "What Happens When" Scenarios**
-- Key hook: 2-3 micro-stories: "When you hang up with a seller...", "When a showing gets rescheduled...", "When a client emails at midnight..." Each shows Archie handling it.
-- Why it works: Concrete scenarios are easier to grasp than abstract processes. They imagine themselves in the situation.
-
-**Option C: The Anti-Demo**
-- Key hook: Explicitly refuse to show a dashboard or feature tour. "We could show you a product demo. Instead, here's what your Friday looks like with Archie."
-- Why it works: Subverts expectations. Reinforces that this isn't software-as-usual. The refusal itself is the message.
+~~- **The Three-Word Stack:** Literally just the words, stacked vertically in large type: "Talk. Handled. Approve." Below, a single sentence: "That's it." Let the whitespace do the work.~~
 
 ---
 
-**Strategic tension:** Option A is cleanest. Option B is most relatable. Option C is boldest and most differentiated. Recommend Option A as the structure with Option B-style scenarios as examples within each step.
+~~**Visual approaches (ideation v1):**~~
+
+~~- **The Shortcut Tap Sequence:** A vertical scroll of 3 minimal phone frames stacked. Frame 1: finger tapping the iOS Shortcut icon (the Archie glyph). Frame 2: static waveform with a timestamp "0:34" — the memo is done. Frame 3: a clean task list with checkmarks and "in progress" pills. No animation needed—the story reads top to bottom like a comic strip. Built with shadcn `Card` components, minimal borders, generous padding.~~
+
+~~- **The Single-Screen Story:** One mobile viewport, no scrolling within it. Top third: static waveform (the input). Bottom two-thirds: a vertical stack of task cards using shadcn `Card` with subtle status indicators (✓ done, ◐ in progress). The visual hierarchy says: you talked once, five things happened. Could use `Badge` components for status.~~
+
+~~- **The Expanding Accordion:** A single collapsed card labeled "Voice memo: 0:42" with a waveform preview. Below it, 5 task cards that appear to "unfold" from that single input. Not animated on the page—just visually staged to show causality. The one becomes many. Uses shadcn `Accordion` visual language without actual interaction.~~
+
+~~- **The Chat-Style Thread:** Borrow the familiar iMessage visual pattern. Left side: a single "voice bubble" with waveform. Right side: a cascade of Archie's responses as clean cards—"Listing draft ready," "Photographer messaged," etc. Feels native to how they already communicate. Mobile-first by nature. Built with flex layouts and shadcn `Card`.~~
+
+~~- **The Timeline Strip:** A vertical line running down the left edge (like a commit history or activity feed). At the top: "You spoke" with waveform. Below: each task branches off the timeline with status. Shows sequence without animation. Clean, minimal, uses shadcn's spacing system and `Separator` components.~~
+
+~~- **The Before/After Swipe:** Two states, but designed for mobile swipe context (even if not actually interactive). Left state: a messy Notes app screenshot, a text thread, mental chaos. Right state: the clean Archie task list. The contrast tells the story. Could be two `Card` components side by side on desktop, stacked on mobile with a divider.~~
 
 ---
 
-### 5. Objection Handling
+~~**Visual approaches (ideation v2 — Jobs/Segall minimalism, staged storytelling):**~~
+
+~~The principle: One idea per stage. Let the visitor scroll through a story, not a feature list. Each stage is a single React component, full-width, mobile-first, with one visual and minimal text. The scroll IS the narrative.~~
+
+~~- **The Three-Stage Scroll:** Three full-viewport sections, each with one element centered. Stage 1: A single waveform, centered, with "0:42" beneath it. Nothing else. Stage 2: A single word—"Handled."—with a subtle checkmark. Stage 3: A clean vertical list of 5 task items, each with a status dot. The visitor scrolls through the experience: input → processing → output. No explanation, no labels—just the progression.~~
+
+~~- **The Fade Reveal:** One fixed viewport. On scroll, elements fade in sequentially. First: the waveform appears. Then: beneath it, task items fade in one by one, staggered. The page itself feels like Archie working. Uses CSS transitions triggered by scroll position (Intersection Observer). The motion IS the story.~~
+
+~~- **The Single Line of Truth:** One centered column, extremely narrow (like a receipt or a text thread). At the top: a waveform. Below: task items appear as simple text lines with status indicators. No cards, no boxes—just typography and a thin vertical rhythm. Think: a poem, not a dashboard. Uses only `<p>` elements and subtle `opacity` differences for status.~~
+
+~~- **The Input/Output Polarity:** Two sections only. Section 1: The waveform, full-bleed, nothing else—represents "you." Section 2: The task list, full-bleed, nothing else—represents "done." The contrast is the entire message. No arrows, no "→", no explanation. The visitor understands: one became the other.~~
+
+~~- **The Staged Typewriter:** One centered text block. On scroll (or on load with delay), text appears letter by letter or line by line: "You spoke for 42 seconds." Then: "Listing drafted." Then: "Photographer contacted." Then: "Seller updated." Then: "MLS form ready." The waveform appears above. The simplicity is theatrical. Uses a simple typewriter animation component.~~
+
+~~- **The Empty State → Full State:** Stage 1: A completely empty screen with a single button labeled "Record." Stage 2 (on scroll): The same screen, now showing a waveform and a task list. The transition from empty to full tells the entire story. The visitor imagines pressing the button. No interaction needed—just the visual before/after of the app itself.~~
+
+---
+
+**✓ CHOSEN APPROACH: "The Living Stream"**
+
+A full-width waveform streams across the screen (left to right), representing live voice input. As it flows, task cards materialize below—pulled visually from the audio stream. The visitor watches work being extracted from speech in real-time.
+
+**Visual Structure:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      "Just talk."                           │
+├─────────────────────────────────────────────────────────────┤
+│  ════════════════════════════════════════════════════════   │  ← Full-width streaming waveform
+│  (streaming left → right)                                   │     (ScrollingWaveform component)
+├─────────────────────────────────────────────────────────────┤
+│     ┌─────────────────┐                                     │
+│     │ Listing draft   │  ← Cards cascade diagonally         │
+│     │ ✓ created       │     as waveform streams             │
+│     └─────────────────┘                                     │
+│              ┌─────────────────┐                            │
+│              │ Photographer    │                            │
+│              │ ◐ in progress   │                            │
+│              └─────────────────┘                            │
+│                       ┌─────────────────┐                   │
+│                       │ Seller email    │                   │
+│                       │ ✓ drafted       │                   │
+│                       └─────────────────┘                   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Why it works:**
+- Uses the same waveform component from the hero (stretched full-width)—visual consistency
+- The streaming animation creates the feeling of "live" without being gimmicky
+- Cards appearing below the stream shows causality: voice in → tasks out
+- Diagonal cascade creates visual "falling from the stream" effect
+- Header "Just talk." is the entire instruction—no explanation needed
+- Scroll-triggered: waveform starts when section enters viewport
+- Staggered card animations (300ms intervals) create narrative pacing
+
+**Technical implementation:** See plan file at `~/.claude/plans/vectorized-foraging-hopper.md`
+
+---
+
+~~**Option B: The Before/After**~~
+~~- Key hook: Side-by-side contrast: "Before: 47 steps across 6 tools. After: You talked for 30 seconds." Don't show the tools—show the experience.~~
+~~- Why it works: Makes the transformation viscerally clear. The simplicity becomes the hero, not the feature list.~~
+
+~~**Option C: The "You Already Know How" Frame**~~
+~~- Key hook: Lead with the insight: "You already know how to leave a voice memo. You already know how to describe what you need. Archie does everything else."~~
+~~- Why it works: Removes the learning curve anxiety entirely. Positions the product as an extension of skills they already have.~~
+
+---
+
+~~### 4. How It Works (Simplified)~~
+
+~~**Visitor arrives feeling:** Believing it might work but needing just enough clarity to feel confident—not a tutorial, just reassurance.~~
+
+~~**We move them to:** "I get it. This is actually simple."~~
+
+~~---~~
+
+~~**Option A: The Three-Step Strip**~~
+~~- Key hook: Talk → Archie Handles → You Approve. Three icons, three short phrases, done. No feature breakdown, no "powered by AI" language.~~
+~~- Why it works: The constraint forces simplicity. If you can't explain it in three steps, you're explaining the wrong thing.~~
+
+~~**Option B: The "What Happens When" Scenarios**~~
+~~- Key hook: 2-3 micro-stories: "When you hang up with a seller...", "When a showing gets rescheduled...", "When a client emails at midnight..." Each shows Archie handling it.~~
+~~- Why it works: Concrete scenarios are easier to grasp than abstract processes. They imagine themselves in the situation.~~
+
+~~**Option C: The Anti-Demo**~~
+~~- Key hook: Explicitly refuse to show a dashboard or feature tour. "We could show you a product demo. Instead, here's what your Friday looks like with Archie."~~
+~~- Why it works: Subverts expectations. Reinforces that this isn't software-as-usual. The refusal itself is the message.~~
+
+~~---~~
+
+~~**Strategic tension:** Option A is cleanest. Option B is most relatable. Option C is boldest and most differentiated. Recommend Option A as the structure with Option B-style scenarios as examples within each step.~~
+
+---
+
+### 4. Objection Handling
 
 **Visitor arrives feeling:** Interested but surfacing final doubts—"what's the catch?"
 
@@ -166,7 +275,7 @@ The core psychological shift: from "this is another thing I'll pay for and never
 
 ---
 
-### 6. Call to Action
+### 5. Call to Action
 
 **Visitor arrives feeling:** Ready to act but needing the final push and clear path.
 
@@ -182,7 +291,7 @@ Three words. No elaboration, no persuasion, no "be the first to..." framing. The
 
 ---
 
-### 7. Final Reassurance (Below CTA)
+### 6. Final Reassurance (Below CTA)
 
 **Visitor arrives feeling:** Either just clicked CTA and wants confirmation, or still hesitant and scrolling for one more push.
 
@@ -212,25 +321,22 @@ Three words. No elaboration, no persuasion, no "be the first to..." framing. The
 
 Based on this audience's psychology and the strategic reality that simplicity is the entire value proposition:
 
-1. **Hero:** Option D (The One-Word Anchor) or Option B (The Permission Slip)
-   - Lead with emotional destination, not features. Disarm the defensive posture immediately.
+1. **Hero:** Option D (The One-Word Anchor)
+   - "Relief." + static waveform. Lead with emotional destination, not features.
 
-2. **Problem Agitation:** Option B (The Graveyard) with specific moments from Option A
-   - Validate their history with software. Make them feel seen without being lectured.
+2. **Problem Agitation:** Option D (The One-Line Mirror)
+   - "Tired of pulling out your laptop while you drive?" One line. Maximum recognition.
 
-3. **Solution Reveal:** Option A (Voice Memo Demo) framed with Option C language
-   - The demo IS the simplicity proof. "You already know how to do this."
+3. **Solution Reveal + How It Works:** Visual Story (mobile-first, shadcn)
+   - Show the iOS Shortcut tap → waveform → task list cascade. One section, static visual storytelling.
 
-4. **How It Works:** Option A (Three-Step Strip) with Option B scenarios as examples
-   - Keep it radically simple. If it looks complicated, you've lost them.
-
-5. **Objection Handling:** Option B ("We Know What You're Thinking")
+4. **Objection Handling:** Option B ("We Know What You're Thinking")
    - Confident, preemptive, brief. 3-4 objections max.
 
-6. **CTA:** "Join the waitlist."
+5. **CTA:** "Join the waitlist."
    - Three words. The page did the work. Get out of the way.
 
-7. **Final Reassurance:** Option A (Quiet Guarantee) + Option B (Vision Whisper)
+6. **Final Reassurance:** Option A (Quiet Guarantee) + Option B (Vision Whisper)
    - Remove risk, end on emotion.
 
 ---

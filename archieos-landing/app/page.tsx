@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header"
 import { HeroSection } from "@/components/landing/sections/HeroSection"
+import { StreamSection } from "@/components/landing/sections/StreamSection"
 
 export default function LandingPage() {
   return (
@@ -7,7 +8,7 @@ export default function LandingPage() {
       <Header />
       <main>
         <HeroSection />
-        {/* Future sections added here */}
+        <StreamSection />
       </main>
     </>
   )

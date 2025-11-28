@@ -1,0 +1,52 @@
+"use client"
+
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils"
+
+export type TaskStatus = "created" | "prepared" | "drafted" | "in_progress" | "ready"
+
+interface TaskCardProps {
+  task: string
+  status: TaskStatus
+  className?: string
+  style?: React.CSSProperties
+}
+
+const statusConfig: Record<TaskStatus, { label: string; icon: string; variant: "default" | "secondary" | "outline" }> = {
+  created: { label: "created", icon: "✓", variant: "default" },
+  prepared: { label: "prepared", icon: "✓", variant: "default" },
+  drafted: { label: "drafted", icon: "✓", variant: "default" },
+  ready: { label: "ready", icon: "✓", variant: "default" },
+  in_progress: { label: "in progress", icon: "◐", variant: "secondary" },
+}
+
+export function TaskCard({ task, status, className, style }: TaskCardProps) {
+  const config = statusConfig[status]
+
+  return (
+    <Card
+      className={cn(
+        "bg-white/80 backdrop-blur-sm border-0 shadow-md py-3",
+        "transition-all duration-300",
+        className
+      )}
+      style={style}
+    >
+      <CardContent className="px-4 py-0 flex items-center justify-between gap-4">
+        <span className="text-sm font-medium text-foreground">{task}</span>
+        <Badge
+          variant={config.variant}
+          className={cn(
+            "text-xs shrink-0",
+            config.variant === "default" && "bg-black text-white",
+            config.variant === "secondary" && "bg-neutral-200 text-neutral-700"
+          )}
+        >
+          <span className="mr-1">{config.icon}</span>
+          {config.label}
+        </Badge>
+      </CardContent>
+    </Card>
+  )
+}
