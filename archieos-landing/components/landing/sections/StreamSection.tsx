@@ -157,12 +157,9 @@ export function StreamSection() {
       <div ref={sectionRef}>
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
-            Tired of pulling out your laptop while driving?
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+            What if you could just ramble on...
           </h2>
-          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-500">
-            Just ramble on.
-          </p>
         </div>
 
         {/* Task cards - grid on mobile, cascade on desktop */}
@@ -210,6 +207,13 @@ export function StreamSection() {
               )
             })}
           </div>
+        </div>
+
+        {/* Closing line */}
+        <div className="text-center mt-12 md:mt-16">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-text-secondary">
+            ...and the work just gets done.
+          </p>
         </div>
       </div>
     </Section>
