@@ -33,6 +33,7 @@ export function ShortcutSection() {
     <Section
       id="shortcut"
       fullHeight
+      snapAlign="start"
       className="flex flex-col items-center justify-center"
       componentName="<ShortcutSection>"
     >

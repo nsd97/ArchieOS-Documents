@@ -163,4 +163,20 @@
     color: #000000;
     overflow-x: hidden;
   }
+
+  /* === SCROLL SNAP - Steve Jobs Edition === */
+  /* "Simplicity is the ultimate sophistication" */
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  /* Accessibility: soften snapping for motion-sensitive users */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-snap-type: y proximity;
+      scroll-behavior: auto;
+    }
+  }
 }

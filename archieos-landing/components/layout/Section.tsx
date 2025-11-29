@@ -10,6 +10,8 @@ interface SectionProps {
   fullHeight?: boolean
   /** Component name for debug display */
   componentName?: string
+  /** Scroll snap alignment: start, center, end, or none */
+  snapAlign?: "start" | "center" | "end" | "none"
 }
 
 export function Section({
@@ -18,6 +20,7 @@ export function Section({
   className,
   fullHeight = false,
   componentName,
+  snapAlign = "start",
 }: SectionProps) {
   const { debugMode } = useDebug()
 
@@ -27,6 +30,13 @@ export function Section({
       className={cn(
         "relative",
         fullHeight && "min-h-screen",
+        // Scroll snap alignment (Tailwind v4 built-in utilities)
+        snapAlign === "start" && "snap-start",
+        snapAlign === "center" && "snap-center",
+        snapAlign === "end" && "snap-end",
+        snapAlign === "none" && "snap-none",
+        // Account for fixed header height
+        "scroll-mt-12",
         debugMode && "border-2 border-dashed border-pink-500",
         className
       )}

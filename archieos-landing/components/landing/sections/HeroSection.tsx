@@ -5,6 +5,7 @@ export function HeroSection() {
     <Section
       id="hero"
       fullHeight
+      snapAlign="start"
       className="flex flex-col items-center justify-center px-6"
       componentName="<HeroSection>"
     >

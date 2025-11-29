@@ -205,6 +205,7 @@ export function TasksSection() {
   return (
     <Section
       id="tasks"
+      snapAlign="start"
       className="h-screen flex flex-col overflow-clip"
       componentName="<TasksSection>"
     >
