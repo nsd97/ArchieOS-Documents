@@ -1,6 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import { DebugLabel } from "@/components/debug/DebugLabel"
 
 interface Props {
   isPressed: boolean
@@ -8,7 +9,8 @@ interface Props {
 
 export function ShortcutButton({ isPressed }: Props) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="relative flex flex-col items-center gap-2">
+      <DebugLabel name="<ShortcutButton>" />
       {/* The Button */}
       <div className={cn(
         "w-16 h-16 rounded-2xl",

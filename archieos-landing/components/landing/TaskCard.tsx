@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { DebugLabel } from "@/components/debug/DebugLabel"
 
 export type TaskStatus = "created" | "prepared" | "drafted" | "in_progress" | "ready"
 
@@ -26,7 +27,8 @@ export function TaskCard({ task, status, isDocument = false, className, style }:
   const config = statusConfig[status]
 
   return (
-    <div className={className} style={style}>
+    <div className={cn("relative", className)} style={style}>
+      <DebugLabel name="<TaskCard>" />
       {/* Document Preview - always visible for document deliverables */}
       {isDocument && (
         <div className={cn(

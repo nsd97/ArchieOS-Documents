@@ -3,6 +3,7 @@
 import { ShortcutButton } from "./ShortcutButton"
 import { LiveWaveform } from "@/components/ui/waveform"
 import { cn } from "@/lib/utils"
+import { DebugLabel } from "@/components/debug/DebugLabel"
 
 type AnimationState = "idle" | "visible" | "buttonPressed" | "listening"
 
@@ -16,10 +17,11 @@ export function IPhoneMockup({ animationState }: Props) {
 
   return (
     <div className={cn(
-      "w-[280px] md:w-[320px]",
+      "relative w-[280px] md:w-[320px]",
       "transition-all duration-700 ease-out",
       isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
     )}>
+      <DebugLabel name="<IPhoneMockup>" />
       {/* iPhone Frame */}
       <div className="relative bg-neutral-900 rounded-[3rem] p-3 shadow-2xl">
         {/* Dynamic Island */}

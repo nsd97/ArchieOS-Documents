@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "setup": "cd archieos-landing && npm install",
+        "run": "cd archieos-landing && npm run dev"
+    }
+}
