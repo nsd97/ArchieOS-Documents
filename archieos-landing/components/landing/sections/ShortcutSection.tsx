@@ -30,8 +30,18 @@ export function ShortcutSection() {
   }, [state])
 
   return (
-    <Section id="shortcut" className="py-24 md:py-32">
+    <Section
+      id="shortcut"
+      fullHeight
+      className="flex flex-col items-center justify-center"
+      componentName="<ShortcutSection>"
+    >
       <div ref={sectionRef} className="flex flex-col items-center px-4">
+        {/* Headline */}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-center mb-8 md:mb-12">
+          What if you could just talk...
+        </h2>
+
         <IPhoneMockup animationState={state} />
 
         <p className={cn(

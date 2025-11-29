@@ -10,6 +10,7 @@ import {
 } from "react"
 
 import { cn } from "@/lib/utils"
+import { DebugLabel } from "@/components/debug/DebugLabel"
 
 export type WaveformProps = HTMLAttributes<HTMLDivElement> & {
   data?: number[]
@@ -1905,6 +1906,7 @@ export const LiveWaveform = ({
       style={{ height: heightStyle }}
       {...props}
     >
+      <DebugLabel name="<LiveWaveform>" />
       <canvas className="block h-full w-full" ref={canvasRef} />
     </div>
   )

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Section } from "@/components/layout/Section"
-import { LiveWaveform } from "@/components/ui/waveform"
 import { TaskCard, type TaskStatus } from "@/components/landing/TaskCard"
 import { cn } from "@/lib/utils"
 
@@ -138,13 +137,19 @@ function getCardPosition(index: number, totalCards: number, isDocument: boolean)
   return { x, y, rotation, zIndex }
 }
 
-export function StreamSection() {
+export function TasksSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [visibleCards, setVisibleCards] = useState<number[]>([])
   const [shuffledTasks, setShuffledTasks] = useState<Task[]>(tasks)
+  const [isHydrated, setIsHydrated] = useState(false)
   const windowWidth = useWindowWidth()
   const cardCount = getCardCount(windowWidth)
+
+  // Mark as hydrated after client mount to avoid SSR/client mismatch
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   // Shuffle on client mount (SSR-safe two-pass rendering)
   useEffect(() => {
@@ -197,49 +202,23 @@ export function StreamSection() {
     return () => timeouts.forEach(clearTimeout)
   }, [isVisible, displayedTasks.length])
 
-  // Calculate container height based on rows
-  const columns = 5
-  const rows = Math.ceil(displayedTasks.length / columns)
-  const containerHeight = rows * 160 + 120
-
   return (
     <Section
-      id="stream"
-      className="py-24 md:py-32"
+      id="tasks"
+      className="h-screen flex flex-col overflow-clip"
+      componentName="<TasksSection>"
     >
-      <div ref={sectionRef}>
+      <div ref={sectionRef} className="flex flex-col flex-1 overflow-hidden">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-            What if you could just talk...
-          </h2>
+        <div className="text-center pt-24 md:pt-32 mb-12 md:mb-16">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-text-secondary">
+            ...and the work gets done.
+          </p>
         </div>
 
-        {/* Full-width streaming waveform */}
-        <div className="w-full mb-12 md:mb-16">
-          <LiveWaveform
-            active={isVisible}
-            mode="scrolling"
-            prefill={true}
-            minHeight={0.15}
-            speed={isVisible ? 35 : 0}
-            height={100}
-            barCount={80}
-            barWidth={3}
-            barGap={4}
-            barColor="#000000"
-            fadeEdges={true}
-            fadeWidth={48}
-          />
-        </div>
-
-        {/* Task cards - scattered layout with horizontal overflow */}
-        <div className="overflow-x-hidden">
-          <div
-            className="relative w-[200vw] -ml-[50vw]"
-            style={{ minHeight: `${containerHeight}px` }}
-          >
-            {displayedTasks.map((task, index) => {
+        {/* Task cards - scattered layout that fills remaining space */}
+        <div className="relative flex-1 w-[200vw] -ml-[50vw]">
+            {isHydrated && displayedTasks.map((task, index) => {
               const { x, y, rotation, zIndex } = getCardPosition(
                 index,
                 displayedTasks.length,
@@ -270,14 +249,6 @@ export function StreamSection() {
                 />
               )
             })}
-          </div>
-        </div>
-
-        {/* Closing line */}
-        <div className="text-center mt-8 md:mt-12">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-text-secondary">
-            ...and the work gets done.
-          </p>
         </div>
       </div>
     </Section>

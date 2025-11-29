@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout/Header"
 import { HeroSection } from "@/components/landing/sections/HeroSection"
 import { ShortcutSection } from "@/components/landing/sections/ShortcutSection"
-import { StreamSection } from "@/components/landing/sections/StreamSection"
+import { TasksSection } from "@/components/landing/sections/TasksSection"
 
 export default function LandingPage() {
   return (
@@ -10,7 +10,7 @@ export default function LandingPage() {
       <main>
         <HeroSection />
         <ShortcutSection />
-        <StreamSection />
+        <TasksSection />
       </main>
     </>
   )

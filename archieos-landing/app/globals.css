@@ -161,5 +161,6 @@
   body {
     background-color: #faf9f5;
     color: #000000;
+    overflow-x: hidden;
   }
 }

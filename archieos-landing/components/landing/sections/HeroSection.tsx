@@ -6,6 +6,7 @@ export function HeroSection() {
       id="hero"
       fullHeight
       className="flex flex-col items-center justify-center px-6"
+      componentName="<HeroSection>"
     >
       {/* Main headline - two lines */}
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center leading-tight">
