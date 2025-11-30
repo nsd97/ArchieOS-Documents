@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/Header"
 import { HeroSection } from "@/components/landing/sections/HeroSection"
 import { ShortcutSection } from "@/components/landing/sections/ShortcutSection"
 import { TasksSection } from "@/components/landing/sections/TasksSection"
+import { FeatureTabsSection } from "@/components/landing/sections/FeatureTabsSection"
 
 export default function LandingPage() {
   return (
@@ -11,6 +12,7 @@ export default function LandingPage() {
         <HeroSection />
         <ShortcutSection />
         <TasksSection />
+        <FeatureTabsSection />
       </main>
     </>
   )
