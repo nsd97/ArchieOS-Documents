@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "react-device-frameset/styles/marvel-devices.min.css";
 
 @custom-variant dark (&:is(.dark *));
 

@@ -3,12 +3,55 @@
 import { useEffect, useRef, useState } from "react"
 import { Section } from "@/components/layout/Section"
 import { TaskCard, type TaskStatus } from "@/components/landing/TaskCard"
+import { useDebug } from "@/components/debug/DebugProvider"
 import { cn } from "@/lib/utils"
 
 interface Task {
   task: string
   status: TaskStatus
   isDocument?: boolean
+}
+
+// Debug label component
+function DebugLabel({
+  label,
+  position = "top-left",
+  color = "pink",
+}: {
+  label: string
+  position?: "top-left" | "top-right" | "bottom-left" | "bottom-right"
+  color?: "pink" | "blue" | "green" | "orange" | "purple" | "cyan"
+}) {
+  const { debugMode } = useDebug()
+  if (!debugMode) return null
+
+  const colorClasses = {
+    pink: "bg-pink-500",
+    blue: "bg-blue-500",
+    green: "bg-green-500",
+    orange: "bg-orange-500",
+    purple: "bg-purple-500",
+    cyan: "bg-cyan-500",
+  }
+
+  const positionClasses = {
+    "top-left": "top-0 left-0 rounded-br",
+    "top-right": "top-0 right-0 rounded-bl",
+    "bottom-left": "bottom-0 left-0 rounded-tr",
+    "bottom-right": "bottom-0 right-0 rounded-tl",
+  }
+
+  return (
+    <div
+      className={cn(
+        "absolute z-[9999] text-white text-[10px] font-mono px-1.5 py-0.5",
+        colorClasses[color],
+        positionClasses[position]
+      )}
+    >
+      {label}
+    </div>
+  )
 }
 
 // 45 tasks: document deliverables + regular tasks for various screen sizes
@@ -145,6 +188,7 @@ export function TasksSection() {
   const [isHydrated, setIsHydrated] = useState(false)
   const windowWidth = useWindowWidth()
   const cardCount = getCardCount(windowWidth)
+  const { debugMode } = useDebug()
 
   // Mark as hydrated after client mount to avoid SSR/client mismatch
   useEffect(() => {
@@ -209,47 +253,86 @@ export function TasksSection() {
       className="h-screen flex flex-col overflow-clip"
       componentName="<TasksSection>"
     >
-      <div ref={sectionRef} className="flex flex-col flex-1 overflow-hidden">
+      {/* SECTION INNER - flex-col flex-1 */}
+      <div
+        ref={sectionRef}
+        className={cn(
+          "relative flex flex-col flex-1 overflow-hidden",
+          debugMode && "border-2 border-dashed border-blue-500"
+        )}
+      >
+        <DebugLabel label="SECTION INNER flex-col flex-1 overflow-hidden" color="blue" />
+
         {/* Header */}
-        <div className="text-center pt-24 md:pt-32 mb-12 md:mb-16">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-text-secondary">
+        <div
+          className={cn(
+            "relative text-center pt-24 md:pt-32 mb-12 md:mb-16",
+            debugMode && "border-2 border-dashed border-orange-500"
+          )}
+        >
+          <DebugLabel label="HEADER pt-24→md:pt-32 mb-12→md:mb-16" color="orange" position="top-right" />
+          <p
+            className={cn(
+              "relative text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-text-secondary",
+              debugMode && "border border-dashed border-purple-400"
+            )}
+          >
+            {debugMode && (
+              <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] text-purple-500 font-mono">
+                p.headline
+              </span>
+            )}
             ...and the work gets done.
           </p>
         </div>
 
-        {/* Task cards - scattered layout that fills remaining space */}
-        <div className="relative flex-1 w-[200vw] -ml-[50vw]">
-            {isHydrated && displayedTasks.map((task, index) => {
-              const { x, y, rotation, zIndex } = getCardPosition(
-                index,
-                displayedTasks.length,
-                task.isDocument || false
-              )
+        {/* Task cards container - scattered layout */}
+        <div
+          className={cn(
+            "relative flex-1 w-[200vw] -ml-[50vw]",
+            debugMode && "border-2 border-dashed border-green-500"
+          )}
+        >
+          <DebugLabel label="CARDS CONTAINER w-[200vw] -ml-[50vw] flex-1" color="green" />
 
-              return (
-                <TaskCard
-                  key={task.task}
-                  task={task.task}
-                  status={task.status}
-                  isDocument={task.isDocument}
-                  className={cn(
-                    "absolute",
-                    "w-[140px] md:w-[200px]",
-                    "opacity-0 scale-95 translate-y-4",
-                    visibleCards.includes(index) && "opacity-100 scale-100 translate-y-0"
-                  )}
-                  style={{
-                    left: `${x}%`,
-                    top: `${y}px`,
-                    transform: `rotate(${rotation}deg)`,
-                    zIndex,
-                    transitionProperty: "opacity, transform",
-                    transitionDuration: "500ms",
-                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-                  }}
-                />
-              )
-            })}
+          {/* Debug info overlay */}
+          {debugMode && (
+            <div className="absolute top-2 left-[50vw] z-[9999] bg-cyan-500 text-white text-[10px] font-mono px-2 py-1 rounded">
+              cards: {displayedTasks.length} | visible: {visibleCards.length} | width: {windowWidth}px | hydrated: {isHydrated ? "yes" : "no"}
+            </div>
+          )}
+
+          {isHydrated && displayedTasks.map((task, index) => {
+            const { x, y, rotation, zIndex } = getCardPosition(
+              index,
+              displayedTasks.length,
+              task.isDocument || false
+            )
+
+            return (
+              <TaskCard
+                key={task.task}
+                task={task.task}
+                status={task.status}
+                isDocument={task.isDocument}
+                className={cn(
+                  "absolute",
+                  "w-[140px] md:w-[200px]",
+                  "opacity-0 scale-95 translate-y-4",
+                  visibleCards.includes(index) && "opacity-100 scale-100 translate-y-0"
+                )}
+                style={{
+                  left: `${x}%`,
+                  top: `${y}px`,
+                  transform: `rotate(${rotation}deg)`,
+                  zIndex,
+                  transitionProperty: "opacity, transform",
+                  transitionDuration: "500ms",
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+              />
+            )
+          })}
         </div>
       </div>
     </Section>
