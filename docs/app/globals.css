@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nextra-primary-hue: 212deg;
+  --nextra-primary-saturation: 100%;
+}
+
+.dark {
+  --nextra-primary-hue: 212deg;
+  --nextra-primary-saturation: 100%;
+}

@@ -1,0 +1,127 @@
+---
+title: Product Vision
+description: What ArchieOS is and isn't - The invisible backend for sales
+---
+
+# Product Vision
+
+## The Invisible Backend
+
+ArchieOS is not a website you log into; it is a system you lean on. It is the operations layer that turns unstructured intent, text, a voice note, a forwarded email, into structured, completed action.
+
+### Short Vision
+
+- ArchieOS is the invisible operating system for sales, not something you log into, but something you lean on.
+- It's a proactive layer that turns unstructured intent into structured, completed action: text, voice, forwarded email, anything.
+- The goal is to take the agent who spends most of their time as a task manager and admin and return them to being the Rainmaker they always wanted to be.
+- The result is a feeling of real relief—you put your phone back in your pocket and know the work is getting done.
+- Build the AI operating system that runs the entire back office for any salesperson in the world, beginning with real estate teams where speed, complexity and constant motion form the ultimate proving ground.
+
+### Long Vision
+
+- Start with realtors because they represent the hardest user experience test in sales, which is why software fails them currently, if ArchieOS can serve them in the middle of their chaos, it can serve anyone.
+- Win the teams that drive the real volume in the industry and use those relationships to refine the core system into a set of AI and user experience building blocks.
+- Adapt these building blocks for other sales verticals like mortgage, auto, insurance and high touch B2B same intelligence, same engine, flexible presentation on top.
+- As the system matures, shape it into an ecosystem similar to the early Apple developer world: a controlled and beautifully consistent interface where third parties can plug in tools while the core experience stays protected, unified and unmistakably ours.
+- The long vision is a world where ArchieOS becomes the backbone of sales work across industries, the invisible operating system professionals rely on every day.
+
+## What Archie Is
+
+- An AI operating system for sales teams that lives primarily on a phone app.
+- A single interface where agents talk to the system, approve and modify drafts, and see what is happening.
+- A back office dispatch console for admins where incoming work is triaged, handled by AI, and escalated to humans as needed that lives primarily on a computer app.
+- A CRM like memory layer that keeps track of people, deals, tasks, documents and timelines, but is not presented as a traditional CRM.
+
+## What Archie Is Not
+
+- Just a CRM. The CRM is one module inside the operating system, like the steering wheel in a car. You buy the car, not the steering wheel.
+- A chatbot. Conversation is one input mode, not the product.
+- A lead generation service. Archie assumes the teams already have deals and focuses on execution.
+
+## Core Product v1
+
+### Primary User
+
+Initial primary user: team leader of a North American real estate team with roughly 5 to 25 agents, doing on the order of 50 to 300 transactions per year. And all their agents. They either already employ at least one admin or are on the verge of needing one.
+
+This person:
+
+- Spends most of their time in their car or on their phone.
+- Feels that tasks are slipping through the cracks.
+- Either hates managing an assistant or is avoiding hiring one.
+
+### Agent App Experience
+
+**Platform**
+
+- iPhone first.
+- Simple companion views for iPad and Mac, largely reusing the same components.
+
+**Home Screen**
+
+- A big button to touch to start a voice recording and a text input field
+- A short list of Drafts to review: contracts, listings, client messages, key tasks.
+- A Today strip with the most important commitments and showings.
+- A Recent activity feed showing things the system has done or scheduled.
+
+### Magic Moment Flow
+
+**Voice Memo to Done**
+
+Context: Realtor just hung up a call with a seller while sitting in the car.
+
+1. They open Archie or tap a Shortcut and speak for 30 to 60 seconds, exactly as they would in a raw voice memo.
+2. Archie transcribes, understands who this is about, and infers what needs to happen.
+3. Within seconds the app shows a preview like:
+    - New listing draft created.
+    - Photographer outreach prepared.
+    - Seller update email drafted.
+    - Tasks for staging in progress.
+    - MLS data entry form ready to be sent at on click approval.
+4. Items that are safe to run automatically, like pinging an approved photographer, can be auto executed. Others appear under Drafts waiting for tap to approve, edit or reject.
+5. The realtor can manage everything with large, Kindergarten level controls: big Yes, No, Edit buttons, nothing dense or technical.
+
+### Dispatch Console
+
+**Working name: Dispatch.**
+
+Audience: admins and human back office operators.
+
+**Responsibilities:**
+
+- See the stream of incoming work from agents.
+- View the agent's transcript and the AI's proposed actions.
+- Approve, modify or override actions and drafts.
+- Handle edge cases that the AI is not yet trusted to handle.
+- Maintain SLAs for tasks such as booking vendors, checking compliance items, and preparing complex documents.
+
+**Dispatch initially can be built as:**
+
+- A focused app with a queue, search and detail pane.
+- Some early work may still run through Slack, but the goal is to move quickly into a first party console.
+
+## Technology and Architecture
+
+**High level approach:**
+
+- One primary ai agent that orchestrates work, backed by a set of specialized internal agents for tasks like document generation, reminder planning, vendor booking, and compliance checking.
+- Voice memo input supported from day one: audio captured on device, transcribed, and fed into the system.
+- Text input supported inside the app for quick corrections and manual input.
+- Initial integrations limited and opinionated to reduce surface area. Over time, add deep integrations with email, calendar, e-signature platforms, MLS systems and vendor networks.
+
+### Future Platform and Kit System
+
+**Longer term vision:**
+
+- Take the repeated building blocks from real estate, such as "schedule vendor", "prepare contract from template", "update CRM like record from conversation", and expose them as a kit system.
+- Third parties can define new tools that plug into Archie much like MCP style connectors, but Archie controls the UX and interaction patterns.
+- This mirrors the Apple pattern of strict UX guidelines paired with powerful developer kits.
+
+## Human in the Loop Operations
+
+**Early stage model:**
+
+- A small human operations team works inside Dispatch, reviewing AI suggestions, handling special cases, and doing work that is not yet automated.
+- Tasks routed to humans include ambiguous vendor coordination, complex contract edge cases, and anything the AI flags as low confidence.
+- Target response times: initial assumption of under one business hour for most tasks during working hours, improving as the system matures.
+- Over time, learning from repeated human actions informs automation, shrinking the human workload.

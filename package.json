@@ -1,0 +1,11 @@
+{
+  "name": "addis",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "docs": "npm run dev --prefix docs",
+    "docs:build": "npm run build --prefix docs",
+    "landing": "npm run dev --prefix archieos-landing",
+    "landing:build": "npm run build --prefix archieos-landing"
+  }
+}
