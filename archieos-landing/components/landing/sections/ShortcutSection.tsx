@@ -122,22 +122,6 @@ export function ShortcutSection() {
           <IPhoneMockup animationState={state} />
         </div>
 
-        {/* Instruction text */}
-        <p
-          className={cn(
-            "relative mt-8 text-lg md:text-xl text-text-secondary text-center",
-            "transition-opacity duration-500",
-            state === "listening" ? "opacity-100" : "opacity-0",
-            debugMode && "border border-dashed border-pink-400"
-          )}
-        >
-          {debugMode && (
-            <span className="absolute -top-4 left-0 text-[9px] text-pink-500 font-mono">
-              p.instruction opacity-transition
-            </span>
-          )}
-          Just press and speak
-        </p>
       </div>
     </Section>
   )
