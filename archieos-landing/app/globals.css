@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "react-device-frameset/styles/marvel-devices.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -161,5 +162,32 @@
   body {
     background-color: #faf9f5;
     color: #000000;
+    overflow-x: hidden;
   }
+
+  /* === SCROLL SNAP - Steve Jobs Edition === */
+  /* "Simplicity is the ultimate sophistication" */
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  /* Accessibility: soften snapping for motion-sensitive users */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-snap-type: y proximity;
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Utility: Hide scrollbar while maintaining scrollability */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
 }
