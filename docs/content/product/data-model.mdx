@@ -1,0 +1,29 @@
+---
+title: Data Model
+description: CRM layer and data structures powering ArchieOS
+---
+
+# Data Model and CRM Layer
+
+## Internal Records
+
+Internally Archie maintains structured records for:
+
+- **Contacts:** clients, vendors, partners, with context like birthdays, family details and preferences surfaced automatically from conversations.
+- **Deals and listings:** status, price, key dates, contingencies, documents.
+- **Tasks:** atomic units of work that can be assigned to admin, agent, or AI.
+- **Messages:** emails, texts, internal comments, and transcripts associated with the above.
+
+## External Presentation
+
+Rather than forcing agents into a traditional CRM UI, Archie:
+
+- Uses the phone's contacts as the anchor where possible.
+- Shows deal and task context around people, not inside deep tables and pipeline views.
+- Can sync to or mirror a team CRM later for teams that require it.
+
+## Design Philosophy
+
+The CRM is one module inside the operating system, like the steering wheel in a car. You buy the car, not the steering wheel.
+
+Data hygiene happens automatically through conversation extraction—agents don't need to manually update records because Archie infers changes from voice memos and messages.
