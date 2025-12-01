@@ -1,7 +1,7 @@
 {
     "scripts": {
         "setup": "cd archieos-landing && npm install && cd ../docs && npm install",
-        "run": "cd archieos-landing && npm run dev",
+        "run": "(cd archieos-landing && npm run dev) & (cd docs && npm run dev)",
         "docs": "cd docs && npm run dev",
         "docs:build": "cd docs && npm run build"
     }
